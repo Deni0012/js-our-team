@@ -36,3 +36,32 @@ const teamMembers = [
     img: "img/female3.png"
   }
 ];
+
+const parentElement = document.querySelector(".team-cards-container")
+let value = "";
+
+renderHTML(parentElement, teamMembers)
+
+function renderHTML(parent, teamMembers) {
+  for (let i = 0; i < teamMembers.length; i++) {
+    let member = teamMembers[i];
+    let teamCard = createHTML(member)
+    parent.appendChild(teamCard);
+  }
+}
+
+function createHTML(member) {
+  let element = document.createElement("div");
+  element.classList.add("team-card")
+
+  element.innerHTML = `
+ <img src= ${member.img} alt=${member.name}>
+ <div class="col"> 
+ <h3>${member.name}</h3>
+ <p>${member.role}</p>
+ <a href="#">${member.email}</a>
+ </div  `
+
+
+  return element
+}
